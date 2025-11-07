@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/massimialunni.marco/Downloads/MassimiAlunniMarcoEmailSender_Client/src/massimialunnimarcoemailsender_client/SMTPResponse.java</file>
             <file>file:/C:/Users/massimialunni.marco/Downloads/MassimiAlunniMarcoEmailSender_Client/src/massimialunnimarcoemailsender_client/MassimiAlunniMarcoEmailSender_Client.java</file>
+            <file>file:/C:/Users/massimialunni.marco/Downloads/MassimiAlunniMarcoEmailSender_Client/src/massimialunnimarcoemailsender_client/SMTPResponseParser.java</file>
+            <file>file:/C:/Users/massimialunni.marco/Downloads/MassimiAlunniMarcoEmailSender_Client/src/massimialunnimarcoemailsender_client/FrameSMTP.java</file>
+            <file>file:/C:/Users/massimialunni.marco/Downloads/MassimiAlunniMarcoEmailSender_Client/src/massimialunnimarcoemailsender_client/SMTPClient.java</file>
         </group>
     </open-files>
 </project-private>

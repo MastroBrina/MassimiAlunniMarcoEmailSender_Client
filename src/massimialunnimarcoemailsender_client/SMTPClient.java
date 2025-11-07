@@ -22,11 +22,13 @@ public class SMTPClient {
     private BufferedReader reader;
     private BufferedWriter writer;
     private Socket socket;
+    private javax.swing.JTextArea atxLog;
 
-    public SMTPClient(String server) throws FileNotFoundException, IOException {
+    public SMTPClient(String server, javax.swing.JTextArea atxLog) throws FileNotFoundException, IOException {
         this.socket = new Socket(server, 25);
         this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        this.atxLog=atxLog;
         
         // Legge e stampa la risposta iniziale del server (es. 220)
         String risposta = reader.readLine();
@@ -72,9 +74,9 @@ public class SMTPClient {
         writer.write(command + "\r\n");
         writer.flush();
 
-        System.out.println("CLIENT: " + command);
+        atxLog.append("CLIENT: " + command+"\n");
         String risposta = readServerResponse();
-        System.out.println("SERVER: " + risposta);
+        atxLog.append("SERVER: " + risposta+"\n");
 
         SMTPResponseParser parser = new SMTPResponseParser();
         SMTPResponse response = parser.parse(risposta);
@@ -93,16 +95,16 @@ public class SMTPClient {
         return sendCommand("RCPT TO:<" + to + ">");
     }
     
-    public SMTPResponse data(String soggetto, String corpo) throws IOException{
+    public SMTPResponse data(String subject, String message) throws IOException{
         SMTPResponse response = sendCommand("DATA");
         if (response.getCode() == 354) {
-            writer.write("SUBJECT: " + soggetto + "\r\n");
-            writer.write(corpo + "\r\n");
+            writer.write("SUBJECT: " + subject + "\r\n");
+            writer.write(message + "\r\n");
             writer.write(".\r\n");
             writer.flush();
 
             String risposta = readServerResponse();
-            System.out.println("SERVER: " + risposta);
+            atxLog.append("SERVER: " + risposta+"\n");
 
             SMTPResponseParser parser = new SMTPResponseParser();
             response = parser.parse(risposta);
